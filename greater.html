@@ -1,0 +1,401 @@
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>Starter Template - Materialize</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <script src="js/jquery-3.1.1.js"</script>
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+  </head>
+  <!-- -----------------------------------------------  CSS- -----------------------------------------------------------------  -->
+  <style type="text/css">  
+        .des{
+      height: 50px ;
+      border-radius: 5px ;
+    }
+    #prog{
+      position: relative;
+      width: 250px ;
+     /* border-style: solid;
+      border-color: grey ;
+      border-radius: 5px ;*/
+      top: 30px ;
+    }
+  body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
+  #main{
+    position: relative;
+    left: 300px ;
+   /* border-style: solid;
+      border-color: grey ;
+      border-radius: 5px ;*/
+      width: 900px;
+      bottom: 400px ;
+  }
+  #nextl{
+    height: 50px ;
+  }
+  #try{
+    height: 50px ;
+  }
+  </style>
+  <!--  ------------------------------------------------    JAVASCRIPT    ----------------------------------------------------------   -->
+  <script type="text/javascript">
+  $("#answer_c").hide() ;
+  $("#answer_i").hide() ;
+    $(document).ready(function(){
+        $("#answer_c").hide() ;
+        $("#answer_i").hide() ;
+        $("#prog-count").css("width" , "100%") ;
+        $("#prog-great").css("width" , "0%") ;
+        $("#prog-tut").css("width" , "0%") ;
+        $("#prog-sub").css("width" , "0%") ;
+        var rand1 = Math.floor((Math.random()*10)+1) ;
+        var rand2 = Math.floor((Math.random()*10)+1) ;
+        console.log(rand1  + "  " + rand2) ;
+        $("#first").text(rand1) ;
+        $("#second").text(rand2) ;
+
+        function correct_answer()   //------------------------------------------------- funtion for handling correct answer
+        {
+          var correct = $("#cscore").text() ;
+            correct++ ;
+            $("#cscore").text(correct) ;
+            console.log("correct : " + correct) ;
+            var total = $("#tscore").text() ;
+            var arr = total.split("/") ;
+           // console.log(arr) ;
+           var x = arr[0] ;
+           x++ ;
+           var p = x*6.6667 ;     // ----------------------------------- change percent accordingly
+           console.log("percent is : " + p) ;
+           var app = x+"/" + arr[1] ;
+           $("#tscore").text(app) ;
+           console.log("x is " + x +  "   " + "tot :  " + arr[1] ) ; 
+           if(x >= arr[1])
+           {
+              // level complete
+              var percent = p+"%" ;
+              $("#question").hide() ;
+              $("#answer_c").hide() ;
+              $("#answer_i").hide() ;
+              console.log("percent : " + percent) ;
+              $("#prog-great").css("width" , percent) ;
+             
+              // check scores
+              var newscore = $("#cscore").text() ;
+              if(newscore > arr[1]-4)
+              {
+                // next level
+                var nextpage = "tutorial.html" ;
+                var newhtml = '<a id="nextl" class="btn  pink accent-2 waves-effect center-align mycent" href='+nextpage+'>Next Level<i class="large material-icons">fast_forward</i></a>' ;
+                console.log(newhtml);
+                $("#next-level").html(newhtml) ;
+              }
+              else
+              {
+                //try again
+                var newhtml = '<a class="btn  pink accent-2 waves-effect center-align mycent" href="greater.html" id="try">Try Again<i class="large material-icons">loop</i></a>' ;
+                 $("#next-level").html(newhtml) ;
+              }
+            //  alert("completed") ;
+           }
+           else
+           {
+            var percent = p+"%" ;
+             console.log("percent : " + percent) ;
+            $("#prog-great").css("width" , percent) ;
+            $("#question").hide() ;
+            $("#answer_c").show("slow") ;
+           }
+        }
+
+        function incorrect_answer()   //------------------------------------------------- funtion for handling incorrect answer
+        {
+          var incorrect = $("#iscore").text() ;
+            incorrect++ ;
+            $("#iscore").text(incorrect) ;
+            var total = $("#tscore").text() ;
+            var arr = total.split("/") ;
+           // console.log(arr) ;
+           var x = arr[0] ;
+           x++ ;
+           var p = x*6.6667 ;       // -----------------------------------------------  CHANGE   ACCORDINGLY 
+           console.log("percent is : " + p) ;
+           var app = x+"/" + arr[1] ;
+           $("#tscore").text(app) ;
+           if(x >= arr[1])
+           {
+              // level complete
+              // alert("level complete") ;
+              $("#question").hide() ;
+              $("#answer_c").hide() ;
+              $("#answer_i").hide() ;
+              var percent = p+"%" ;
+              console.log("percent : " + percent) ;
+              $("#prog-great").css("width" , percent) ;
+              var newscore = $("#cscore").text() ;
+              if(newscore > arr[1]-4)
+              {
+                // next level
+                var nextpage = "tutorial.html" ;
+                var newhtml = '<a id="nextl" class="btn  pink accent-2 waves-effect center-align mycent" href='+nextpage+'>Next Level<i class="large material-icons">fast_forward</i></a>' ;
+                console.log(newhtml);
+                $("#next-level").html(newhtml) ;
+              }
+              else
+              {
+                //try again
+                var newhtml = '<a class="btn  pink accent-2 waves-effect center-align mycent" href="greater.html" id="try">Try Again<i class="large material-icons">loop</i></a>' ;
+                 $("#next-level").html(newhtml) ;
+              }
+            //  alert("completed") ;
+           }
+           else
+           {
+              var percent = p+"%" ;
+              console.log("percent : " + percent) ;
+              $("#prog-great").css("width" , percent) ;
+              $("#question").hide() ;
+              $("#answer_i").show("slow") ;
+           }
+        }
+
+        function generate_next()
+        {
+          $("#answer").hide() ;
+          var rand1 = Math.floor((Math.random()*10)+1) ;
+          var rand2 = Math.floor((Math.random()*10)+1) ;
+          console.log(rand1  + "  " + rand2) ;
+          $("#first").text(rand1) ;
+          $("#second").text(rand2) ;
+          $("#question").show() ;
+        }
+
+        $("#first").click(function(){
+                                                       // -------------------------------  click function for first button
+          var x = $(this).text() ;
+          var y = $("#second").text() ;
+          x = parseInt(x) ;
+          y = parseInt(y) ;
+          console.log(x + "  " + y ) ;  
+          if(x > y)
+          {
+            // call to correct function
+            // alert($("#first").text()) ;
+            correct_answer() ;
+            // alert("Correct") ;
+          }
+          else
+          {
+            // call to incorrect function
+            // alert($("#second").text()) ;
+            incorrect_answer()
+            // alert("Incorrect") ;
+          }
+        }) ;
+
+        $("#second").click(function(){     // -------------------------------  click function for second button
+          console.log("second nutton clicked") ;
+          var x = $("#first").text() ;
+          var y = $(this).text();
+          x = parseInt(x) ;
+          y = parseInt(y) ;
+          console.log(x + "  " + y ) ;  
+          if(y > x)
+          {
+            // call to correct function
+          //  alert($("#second").text());
+            correct_answer() ;
+            // alert("Correct") ;
+          }
+          else
+          {
+            // call to incorrect function
+          //  alert($("#first").text()) ;
+            incorrect_answer();
+            // alert("Incorrect") ;
+          }
+        }) ;
+
+        $("#equal").click(function(){     // -------------------------------  click function for equal button
+          var x = $("#first").text() ;
+          var y = $("#second").text() ;
+          x = parseInt(x) ;
+          y = parseInt(y) ;
+          if(x == y)
+          {
+            // call to correct function
+            correct_answer() ;
+            // alert("Correct") ;
+          }
+          else
+          {
+            // call to incorrect function
+            incorrect_answer();
+            // alert("Incorrect") ;
+          }
+        }) ;
+
+        $("#next_c").click(function(){
+          $("#answer_c").hide() ;
+          generate_next() ;
+        });
+
+        $("#next_i").click(function(){
+          $("#answer_i").hide() ;
+          generate_next() ;
+        });
+
+    });
+  </script>
+<body>
+
+<nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="index.html" class="brand-logo">Subtract IT <i class="material-icons">mode_edit</i></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="index.html">Home</a></li>
+      </ul>
+
+      <ul id="nav-mobile" class="side-nav">
+        <li><a href="index.html">Home</a></li>
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+
+  <div id="prog">
+  <h3 class="header center grey-text">Progress<i class="material-icons">launch</i></h3>
+  <div class="row">
+  <div class="col l12 s12">
+  <h5 class="header center" style="color:#b71c1c;">Counting<i class="material-icons">group_work</i></h5>  <!--    Counting    -->
+  <div class="progress">
+      <div class="determinate" id="prog-count" style="width: 70%"></div>
+  </div>
+  </div>
+  </div>
+
+   <div class="row">
+  <div class="col l12 s12">
+  <h5 class="header center" style="color:#ff5722 ;">Greater<i class="material-icons">call_made</i></h5>    <!--    Greater   -->
+  <div class="progress">
+      <div class="determinate" id="prog-great" style="width: 70%"></div>
+  </div>
+  </div>
+  </div>
+
+   <div class="row">
+  <div class="col l12 s12">
+  <h5 class="header center " style="color:#004d40 ;">Tutorial<i class="material-icons">info</i></h5>       <!--    Tutorial    -->
+  <div class="progress">
+      <div class="determinate" id="prog-tut" style="width: 70%"></div>
+  </div>
+  </div>
+  </div>
+
+   <div class="row">
+  <div class="col l12 s12">
+  <h5 class="header center " style="color:#4a148c ;">Subtraction<i class="material-icons">mode_edit</i></h5>    <!--    Subtraction    -->
+  <div class="progress">
+      <div class="determinate" id="prog-sub" style="width: 70%"></div>
+  </div>
+  </div>
+  </div>
+  </div>
+ 
+
+  <div id="main">
+  <h2 class="header center " style="color:#ff5722;">Check your Number Theory <i class="large material-icons">call_made</i></h2>  <!--  MAIN   Division   -->
+  <div id="score">
+  <div class="row">
+  <div class="col l4 m12 s12">
+  <h5 class="header center " style="color:#212121;">Total </h5><h5 class="center" id="tscore">0/15</h5>
+  </div>
+  <div class="col l4 m12 s12">
+  <h5 class="header center " style="color:#4caf50;">Correct </h5><h5 class="center" id="cscore">0</h5>
+  </div>
+  <div class="col l4 m12 s12">
+  <h5 class="header center " style="color:#d32f2f;">Incorrect </h5><h5 class="center" id="iscore">0</h5>
+  </div>
+  </div>
+  </div>
+  <br>
+  <div id="question">          <!--    -----------------------------------------------  Question DIVISION  STARTED ---------    --- --> 
+  <h5 class="header center " id="count-head" style="color:#ffa726;">Which one is Greater ?</h5>
+  <br>
+  <div class="row">
+  <div class="col s12 m12 l4 center">
+  <a class="btn-floating btn-large waves-effect waves-light  amber darken-4 center" id="first">5</a>
+  </div>
+  <div class="col s12 m12 l4 center">
+  <a class="btn-floating btn-large waves-effect waves-light brown darken-4 center" id="second">6</a>
+  </div>
+  <div class="col s12 m12 l4 center">
+  <a class="btn center" id="equal">Equal</a>
+  </div>
+  </div>
+  </div>
+
+   <div id="next-level" class="center">                               <!--                 -----------------  LEVEL COMPLETED  BUTTON  ----        -->
+    <!-- <a id="next-l" class="btn  pink accent-2 waves-effect center-align">jcndvj</a> -->
+  </div> 
+
+  <div id="answer_c">               <!--    -----------------------------------------------  ANSWER DIVISION  STARTED ---------    --- --> 
+  <h4 class="header center " id="cor" style="color:#388e3c;">Correct Answer</h4>
+  <div class="row">
+  <div class="col s12 m12 l12 center">
+  <a class="btn-large waves-effect pink accent-3" id="next_c">Next</a>
+  </div>
+  </div>
+  </div>
+
+  <div id="answer_i">               <!--    -----------------------------------------------  ANSWER DIVISION  STARTED ---------    --- --> 
+  <h4 class="header center " id="inc" style="color:#b71c1c;">Incorrect Answer</h4>
+  <div class="row">
+  <div class="col s12 m12 l12 center">
+  <a class="btn-large waves-effect pink accent-3" id="next_i">Next</a>
+  </div>
+  </div>
+  </div>
+
+  </div>  <!-- --------------------------------------------------------------------------------------------- Main Division Ended  --- -->
+
+
+
+
+<footer class="page-footer grey darken-2">
+          <div class="container">
+          <div class="row">
+              <div class="col l12 s12 center">
+                <h5 class="white-text">AI Project</h5>
+                <p class="grey-text text-lighten-4">This is tutor for children who doesn't know how to subtract.</p>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            © 2016 Puneet Aggarwal
+            <a class="grey-text text-lighten-4 right" href="#!">puneet</a>
+            </div>
+          </div>
+        </footer>
+
+
+  <!--  Scripts-->
+
+
+  </body>
+</html>
