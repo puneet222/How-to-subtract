@@ -1,0 +1,399 @@
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>Starter Template - Materialize</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <script src="js/jquery-3.1.1.js"</script>
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+  <style type="text/css">
+    .des{
+      height: 50px ;
+      border-radius: 5px ;
+    }
+    #prog{
+      position: relative;
+      width: 250px ;
+      /*border-style: solid;
+      border-color: grey ;
+      border-radius: 5px ;*/
+      top: 30px ;
+    }
+  body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
+
+  #main{
+    position: relative;
+    left: 300px ;
+    /*border-style: solid;
+      border-color: grey ;
+      border-radius: 5px ;*/
+      width: 900px;
+      bottom: 400px ;
+  }
+  #cimages{
+    width: 500px ;
+   /* border-style: solid;
+      border-color: grey ;
+      border-radius: 5px ;*/
+      position: relative;
+      left: 20% ;
+      right: 50% ;
+  }
+  #next{
+    position: relative;
+    left: 45%;
+  }
+  .mycent{
+    position: relative;
+    left: 42%;
+  }
+  #num1{
+    size: 100px;
+  }
+  #video{
+    width: 800px ;
+    height: 400px ;
+    position: relative;
+    left: 30% ;
+    bottom: 60% ;
+  }
+  </style>
+                     <!--------------------------------------------- javascript ---------------------------------------- -->
+  <script type="text/javascript">
+  $("#inc").hide() ;
+  $("#cor").hide() ;
+  $("#next").hide() ;
+  $("#video").hide() ;
+  $(document).ready(function(){
+        $("#prog-count").css("width" , "100%") ;
+        $("#prog-great").css("width" , "100%") ;
+        $("#prog-tut").css("width" , "100%") ;
+        $("#prog-sub").css("width" , "0%") ;
+        $("#inc").hide() ;
+        $("#cor").hide() ;
+        $("#next").hide() ;
+        $("#video").hide() ;
+        var rand1 = Math.floor((Math.random()*10)+1) ;
+        var rand2 = Math.floor((Math.random()*rand1)+1) ;
+        $("#num1").text(rand1) ;
+        $("#num2").text(rand2) ;
+
+        function correct_function()    // --------------------------------   function for handling correct answer---------------------
+        {
+          $("#cor").show();
+          console.log("in correct function") ;
+            var correct = $("#cscore").text() ;
+            correct++ ;
+            $("#cscore").text(correct) ;
+            console.log("correct : " + correct) ;
+            var total = $("#tscore").text() ;
+            var arr = total.split("/") ;
+           // console.log(arr) ;
+           var x = arr[0] ;
+           x++ ;
+           var p = x*6.667 ;      
+           console.log("percent is : " + p) ;
+           var app = x+"/" + arr[1] ;
+           $("#tscore").text(app) ;
+           if(x >= arr[1])
+           {
+              // level complete
+              var percent = p+"%" ;
+              console.log("percent : " + percent) ;
+              $("#prog-sub").css("width" , percent) ;
+              // check scores
+              var newscore = $("#cscore").text() ;
+              if(newscore > arr[1]-2)
+              {
+                // next level BONUS MODAL
+                $("#modal1").openModal() ;
+              }
+              else
+              {
+                //try again
+                var newhtml = '<a class="btn  pink accent-2 waves-effect center-align mycent" href="subtract.html">Try Again</a>' ;
+                 $("#next-level").html(newhtml) ;
+
+              }
+            //  alert("completed") ;
+           }
+           else
+           {
+            var percent = p+"%" ;
+            console.log("percent : " + percent) ;
+            $("#prog-sub").css("width" , percent) ;
+            $("#next").show();
+           }
+        }
+
+        function incorrect_answer()  // --------------------------------   function for handling incorrect answer---------------------
+        {
+          $("#inc").show("slow");
+          console.log("in incorrect function") ;
+            var incorrect = $("#iscore").text() ;
+            incorrect++ ;
+            $("#iscore").text(incorrect) ;
+            var total = $("#tscore").text() ;
+            var arr = total.split("/") ;
+           // console.log(arr) ;
+           var x = arr[0] ;
+           x++ ;
+           var p = x*5 ;   
+           console.log("percent is : " + p) ;
+           var app = x+"/" + arr[1] ;
+           $("#tscore").text(app) ;
+           if(x >= arr[1])
+           {
+              // level complete
+              var percent = p+"%" ;
+              console.log("percent : " + percent) ;
+              $("#prog-sub").css("width" , percent) ;
+              var newscore = $("#cscore").text() ;
+              if(newscore > arr[1]-2)
+              {
+                // next level BONUS MODAL
+                $("#modal1").openModal() ;
+              }
+              else
+              {
+                //try again
+                var newhtml = '<a class="btn  pink accent-2 waves-effect center-align mycent" href="subtract.html">Try Again</a>' ;
+                 $("#next-level").html(newhtml) ;
+              }
+            //  alert("completed") ;
+           }
+           else
+           {
+              var percent = p+"%" ;
+              console.log("percent : " + percent) ;
+              $("#prog-sub").css("width" , percent) ;
+              $("#next").show();
+           }
+        }
+
+        function generate_next()  // ---------------------------- function for generating next question
+        {
+          var rand1 = Math.floor((Math.random()*10)+1) ;
+          var rand2 = Math.floor((Math.random()*rand1)+1) ;
+          $("#num1").text(rand1) ;
+          $("#num2").text(rand2) ;
+        }
+
+        $("#next").click(function(){   // --------------------------------  function for handling next button----------------
+          generate_next() ;
+          $("#inc").hide() ;
+          $("#cor").hide() ;
+          $("#next").hide() ;
+          $("#question").show("slow") ;
+        }) ;
+
+
+        $("#answer").click(function(){
+          var x = $("#sub-ans").val() ;
+          var n1 = $("#num1").text() ;
+          var n2 = $("#num2").text() ;
+          
+          if(x == "")
+            alert("Please Enter the answer") ;
+          else
+          {
+            if(parseInt(x) == (n1-n2) )
+            {
+              // call to correct function
+              correct_function() ;
+              // alert("correct") ;
+            }
+            else
+            {
+              // call to incorrect function
+              incorrect_answer();
+              // alert("incorrect") ;
+            }
+            $("#question").hide("slow") ;
+          }
+        })
+
+        $("#watch").click(function(){
+          $("#main").hide("slow" , function(){
+            $("#video").show("slow") ;
+          })
+        })
+  });
+  </script>
+</head>
+<body>
+  <nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="index.html" class="brand-logo">Subtract IT <i class="material-icons">mode_edit</i></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="index.html">Home</a></li>
+      </ul>
+
+      <ul id="nav-mobile" class="side-nav">
+        <li><a href="index.html">Home</a></li>
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+
+  <div id="prog">
+  <h3 class="header center grey-text">Progress<i class="material-icons">launch</i></h3>
+  <div class="row">
+  <div class="col l12 s12">
+  <h5 class="header center" style="color:#b71c1c;">Counting<i class="material-icons">group_work</i></h5>  <!--    Counting    -->
+  <div class="progress">
+      <div class="determinate" id="prog-count" style="width: 70%"></div>
+  </div>
+  </div>
+  </div>
+
+   <div class="row">
+  <div class="col l12 s12">
+  <h5 class="header center" style="color:#ff5722 ;">Greater<i class="material-icons">call_made</i></h5>    <!--    Greater   -->
+  <div class="progress">
+      <div class="determinate" id="prog-great" style="width: 70%"></div>
+  </div>
+  </div>
+  </div>
+
+   <div class="row">
+  <div class="col l12 s12">
+  <h5 class="header center " style="color:#004d40 ;">Tutorial<i class="material-icons">info</i></h5>       <!--    Tutorial    -->
+  <div class="progress">
+      <div class="determinate" id="prog-tut" style="width: 70%"></div>
+  </div>
+  </div>
+  </div>
+
+   <div class="row">
+  <div class="col l12 s12">
+  <h5 class="header center " style="color:#4a148c ;">Subtraction<i class="material-icons">mode_edit</i></h5>    <!--    Subtraction    -->
+  <div class="progress">
+      <div class="determinate" id="prog-sub" style="width: 70%"></div>
+  </div>
+  </div>
+  </div>
+  </div>
+
+
+<div id="main">
+  <h2 class="header center " style="color:#4a148c;">Start Subtracting<i class="large material-icons">mode_edit</i></h2>  <!--  MAIN   Division   -->
+  <div id="score">
+  <div class="row">
+  <div class="col l4 m12 s12">
+  <h5 class="header center " style="color:#212121;">Total </h5><h5 class="center" id="tscore">0/15</h5>
+  </div>
+  <div class="col l4 m12 s12">
+  <h5 class="header center " style="color:#4caf50;">Correct </h5><h5 class="center" id="cscore">0</h5>
+  </div>
+  <div class="col l4 m12 s12">
+  <h5 class="header center " style="color:#d32f2f;">Incorrect </h5><h5 class="center" id="iscore">0</h5>
+  </div>
+  </div>
+  </div>
+
+
+  <br>
+  <h5 class="header center " id="count-head" style="color:#ffa726;">Input the answer of subtracting 2 numbers</h5>
+  <br>
+  <br>
+  <div class="row" id="question">
+  <div class="col s4 m4 l1 center offset-l1" >
+  <a class="btn-floating btn-large waves-effect waves-light brown darken-4" id="num1">8</a>
+  </div>
+  <div class="col s4 m4 l2 center">
+  <a class="btn-floating btn waves-effect waves-light deep-orange darken-4"><i class="material-icons">remove</i></a>
+  </div>
+  <div class="col s4 m4 l1 center" >
+   <a class="btn-floating btn-large waves-effect waves-light teal darken-4" id="num2">8</a>
+  </div>
+  <div class="col s4 m4 l2 center">
+   <a class="btn-floating btn waves-effect waves-light green darken-4"><i class="material-icons">drag_handle</i></a>
+  </div>
+  <div class="input-field col s4 m4 l2">
+    <input id="sub-ans" type="text" class="validate">
+    <label for="sub-ans">ANSWER</label>
+  </div>
+  <div class="col s4 m4 l2 center" id="answer">
+  <a class="btn-floating btn-large waves-effect waves-light blue darken-4">Go</a>
+  </div>
+  </div>
+  <div id="next-level">   <!--                 -----------------  LEVEL COMPLETED  BUTTON  ----        -->
+    <!-- <a id="next-l" class="btn  pink accent-2 waves-effect center-align">jcndvj</a> -->
+  </div>         
+  <br>
+  <div id="inc"><h5 class="header center " style="color:#d32f2f;">Incorrect Answer</h5></div>
+  <div  id="cor"> <h5 class="header center" style="color:#2e7d32;">Correct Answer</h5></div>
+  <br>
+  
+  <a id="next" class="btn pink accent-3 waves-effect center-align">Next</a>
+  </div>
+
+                
+  <!--  -----------------------------------------------------------  BONUS   MODAL ------------------------------  -----------  -->
+                <div id="modal1" class="modal">
+                  <div class="modal-content">
+                    <h4>Congratulations!</h4>
+                    <p>You have finished the Subtraction tutorial.</p>
+                    <p>Now you can subtract any 1 digit numbers.</p>
+                    <p>To learn how to subtract two digits number click the button WATCH.</p>
+
+                  </div>
+                  <div class="modal-footer">
+                    <a href="index.html" class=" modal-action modal-close waves-effect waves-green btn-flat">Home</a>
+                    <a class=" modal-action modal-close waves-effect waves-green btn-flat deep-orange" id="watch">WATCH</a>
+                  </div>
+                </div>
+
+
+<!-- ---------------------------------------------  BONUS    VIDEO   ------------------------------------------------------  -->
+<div id="video">
+<video class="responsive-video" controls>
+    <source src="video/sub3.mp4" type="video/mp4">
+  </video>
+<br>
+<a class=" center modal-action modal-close waves-effect waves-green btn-flat deep-orange white-text" href="index.html" style="position:relative;left:45%;top:10px;">Home</a>
+</div>
+
+
+
+
+
+<footer class="page-footer grey darken-2">
+          <div class="container">
+          <div class="row">
+              <div class="col l12 s12 center">
+                <h5 class="white-text">AI Project</h5>
+                <p class="grey-text text-lighten-4">This is tutor for children who doesn't know how to subtract.</p>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            © 2016 Puneet Aggarwal
+            <a class="grey-text text-lighten-4 right" href="https://github.com/puneet222">puneet</a>
+            </div>
+          </div>
+        </footer>
+
+
+  <!--  Scripts-->
+
+
+  </body>
+</html>
+
+
