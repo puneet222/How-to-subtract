@@ -1,0 +1,369 @@
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>Starter Template - Materialize</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <script src="js/jquery-3.1.1.js"</script>
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+  <style type="text/css">
+    .des{
+      height: 50px ;
+      border-radius: 5px ;
+    }
+    #prog{
+      position: relative;
+      width: 250px ;
+      /*border-style: solid;
+      border-color: grey ;
+      border-radius: 5px ;*/
+      top: 30px ;
+    }
+  body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
+
+  #main{
+    position: relative;
+    left: 300px ;
+    /*border-style: solid;
+      border-color: grey ;
+      border-radius: 5px ;*/
+      width: 900px;
+      bottom: 400px ;
+  }
+  #cimages{
+    width: 500px ;
+   /* border-style: solid;
+      border-color: grey ;
+      border-radius: 5px ;*/
+      position: relative;
+      left: 20% ;
+      right: 50% ;
+  }
+  #next{
+    position: relative;
+    left: 45%;
+  }
+  .mycent{
+    position: relative;
+    left: 42%;
+  }
+  </style>
+                     <!--------------------------------------------- javascript ---------------------------------------- -->
+  <script type="text/javascript">
+  $("#next").hide() ;
+  $("#inc").hide();
+  $("#cor").hide();
+    $(document).ready(function(){
+      $("#inc").hide();
+  $("#cor").hide();
+        var total = 20 ;
+         $("#next").hide() ;
+        $("#prog-count").css("width" , "0%") ;
+        $("#prog-great").css("width" , "0%") ;
+        $("#prog-tut").css("width" , "0%") ;
+        $("#prog-sub").css("width" , "0%") ;
+        var attempt = 0 ;
+
+        var rand = Math.floor((Math.random()*10)+1) ;
+          // alert(rand) ;
+          var htmlimage = '<img src="images/show.png" height=100px width100px>' ;
+          $("#cimages").html(htmlimage) ;
+          for(var i = 1 ;  i < rand ; i++)
+          {
+             $("#cimages").append(htmlimage) ;
+          }
+
+
+        
+        function next_question()  // -------------------------------------  generate next question
+        {
+          rand = Math.floor((Math.random()*10)+1) ;
+          // alert(rand) ;
+           $("#next").hide() ;
+          var htmlimage = '<img src="images/show.png" height=100px width100px>' ;
+          $("#cimages").html(htmlimage) ;
+          for(var i = 1 ;  i < rand ; i++)
+          {
+             $("#cimages").append(htmlimage) ;
+          }
+        }
+
+        // function for correct user input
+        function correct_answer()            // -----------------------------  function for handling correct answer
+        {
+          $("#cor").show();
+          console.log("in correct function") ;
+            var correct = $("#cscore").text() ;
+            correct++ ;
+            $("#cscore").text(correct) ;
+            console.log("correct : " + correct) ;
+            var total = $("#tscore").text() ;
+            var arr = total.split("/") ;
+           // console.log(arr) ;
+           var x = arr[0] ;
+           x++ ;
+           var p = x*5 ;      
+           console.log("percent is : " + p) ;
+           var app = x+"/" + arr[1] ;
+           $("#tscore").text(app) ;
+           if(x == arr[1])
+           {
+              // level complete
+              var percent = p+"%" ;
+              console.log("percent : " + percent) ;
+              $("#prog-count").css("width" , percent) ;
+              $("#cimages").slideUp() ;
+              $("#input-number").hide() ;
+              // check scores
+              var newscore = $("#cscore").text() ;
+              if(newscore > arr[1]-2)
+              {
+                // next level
+                var nextpage = "greater.html" ;
+                var newhtml = '<a class="btn  pink accent-2 waves-effect center-align mycent" href='+nextpage+'>Next Level</a>' ;
+                console.log(newhtml) ;
+                $("#next-level").html(newhtml) ;
+              }
+              else
+              {
+                //try again
+                var newhtml = '<a class="btn  pink accent-2 waves-effect center-align mycent" href="counting.html">Try Again</a>' ;
+                 $("#next-level").html(newhtml) ;
+
+              }
+            //  alert("completed") ;
+           }
+           else
+           {
+            var percent = p+"%" ;
+             console.log("percent : " + percent) ;
+            $("#prog-count").css("width" , percent) ;
+            $("#cimages").slideUp() ;
+            $("#input-number").hide() ;
+            $("#next").show();
+           }
+        }
+
+        function incorrect_answer()            ///       --------------------------  function for handling incorrect answer
+        {
+          $("#inc").show("slow");
+          console.log("in incorrect function") ;
+            var incorrect = $("#iscore").text() ;
+            incorrect++ ;
+            $("#iscore").text(incorrect) ;
+            var total = $("#tscore").text() ;
+            var arr = total.split("/") ;
+           // console.log(arr) ;
+           var x = arr[0] ;
+           x++ ;
+           var p = x*5 ;   
+           console.log("percent is : " + p) ;
+           var app = x+"/" + arr[1] ;
+           $("#tscore").text(app) ;
+           if(x == arr[1])
+           {
+              // level complete
+              var percent = p+"%" ;
+              console.log("percent : " + percent) ;
+              $("#prog-count").css("width" , percent) ;
+              $("#count-head").hide();
+              $("#cimages").slideUp() ;
+              $("#input-number").hide() ;
+              var newscore = $("#cscore").text() ;
+              if(newscore > arr[1]-2)
+              {
+                // next level
+                var nextpage = "greater.html" ;
+                var newhtml = '<a class="btn  pink accent-2 waves-effect center-align mycent" href='+nextpage+'>Next Level</a>' ;
+                console.log(newhtml);
+                $("#next-level").html(newhtml) ;
+              }
+              else
+              {
+                //try again
+                var newhtml = '<a class="btn  pink accent-2 waves-effect center-align mycent" href="counting.html">Try Again</a>' ;
+                 $("#next-level").html(newhtml) ;
+              }
+            //  alert("completed") ;
+           }
+           else
+           {
+              var percent = p+"%" ;
+              console.log("percent : " + percent) ;
+              $("#prog-count").css("width" , percent) ;
+              $("#count-head").hide();
+              $("#cimages").slideUp() ;
+              $("#input-number").hide() ;
+              $("#next").show();
+           }
+        }
+
+        $("#next").click(function(){
+          $("#count-head").show();
+          $("#cimages").slideDown() ;
+          $("#input-number").show() ;
+          $("#inc").hide();
+          $("#cor").hide();
+          $("#count-head").show();
+          next_question() ;
+        }) ;
+
+        $("#count-click").click(function(){           // -----------------------------  submit click button
+          var user = $("#count-img").val() ;
+          $("#count-head").hide() ;
+          if(user == rand)
+          {
+            console.log("in if") ;
+             correct_answer() ;
+          }
+          else{
+            console.log("in else") ;
+            incorrect_answer() ;
+          }
+        }) ;
+
+    }) ;
+  </script>
+</head>
+<body>
+  <nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="index.html" class="brand-logo">Subtract IT <i class="material-icons">mode_edit</i></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="index.html">Home</a></li>
+      </ul>
+
+      <ul id="nav-mobile" class="side-nav">
+        <li><a href="index.html">Home</a></li>
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+
+  <div id="prog">
+  <h3 class="header center grey-text">Progress<i class="material-icons">launch</i></h3>
+  <div class="row">
+  <div class="col l12 s12">
+  <h5 class="header center" style="color:#b71c1c;">Counting<i class="material-icons">group_work</i></h5>  <!--    Counting    -->
+  <div class="progress">
+      <div class="determinate" id="prog-count" style="width: 70%"></div>
+  </div>
+  </div>
+  </div>
+
+   <div class="row">
+  <div class="col l12 s12">
+  <h5 class="header center" style="color:#ff5722 ;">Greater<i class="material-icons">call_made</i></h5>    <!--    Greater   -->
+  <div class="progress">
+      <div class="determinate" id="prog-great" style="width: 70%"></div>
+  </div>
+  </div>
+  </div>
+
+   <div class="row">
+  <div class="col l12 s12">
+  <h5 class="header center " style="color:#004d40 ;">Tutorial<i class="material-icons">info</i></h5>       <!--    Tutorial    -->
+  <div class="progress">
+      <div class="determinate" id="prog-tut" style="width: 70%"></div>
+  </div>
+  </div>
+  </div>
+
+   <div class="row">
+  <div class="col l12 s12">
+  <h5 class="header center " style="color:#4a148c ;">Subtraction<i class="material-icons">mode_edit</i></h5>    <!--    Subtraction    -->
+  <div class="progress">
+      <div class="determinate" id="prog-sub" style="width: 70%"></div>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+
+<div id="main">
+  <h2 class="header center " style="color:#b71c1c;">Check your Counting <i class="large material-icons">group_work</i></h2>  <!--  MAIN   Division   -->
+  <div id="score">
+  <div class="row">
+  <div class="col l4 m12 s12">
+  <h5 class="header center " style="color:#212121;">Total </h5><h5 class="center" id="tscore">0/5</h5>
+  </div>
+  <div class="col l4 m12 s12">
+  <h5 class="header center " style="color:#4caf50;">Correct </h5><h5 class="center" id="cscore">0</h5>
+  </div>
+  <div class="col l4 m12 s12">
+  <h5 class="header center " style="color:#d32f2f;">Incorrect </h5><h5 class="center" id="iscore">0</h5>
+  </div>
+  </div>
+  </div>
+  <br>
+  <h5 class="header center " id="count-head" style="color:#ffa726;">Count the number of Objects </h5>
+  <div id="cimages" class="center-align">
+                                                                                       <!-- HERE GOES THE IMAGES -->
+  </div>
+  <div id="next-level">   <!--                 -----------------  LEVEL COMPLETED  BUTTON  ----        -->
+    <!-- <a id="next-l" class="btn  pink accent-2 waves-effect center-align">jcndvj</a> -->
+  </div>         
+  <br>
+  <div id="inc"><h5 class="header center " style="color:#d32f2f;">Incorrect Answer</h5></div>
+  <div  id="cor"> <h5 class="header center" style="color:#2e7d32;">Correct Answer</h5></div>
+  <br>
+  <div class="row" id="input-number">
+        <div class="input-field col s5 offset-s3">
+          <input id="count-img" type="text" class="validate">
+          <label for="count-img">Number of Objects</label>
+        </div> 
+        <div class="col s4">
+        <a id="count-click" class="btn orange darken-1 waves-effect">Submit</a>
+        </div>
+  </div>
+  <br>
+  <br>
+  <a id="next" class="btn  pink accent-2 waves-effect center-align">Next</a>
+  </div>
+
+
+
+
+
+
+
+
+
+<footer class="page-footer grey darken-2">
+          <div class="container">
+          <div class="row">
+              <div class="col l12 s12 center">
+                <h5 class="white-text">AI Project</h5>
+                <p class="grey-text text-lighten-4">This is tutor for children who doesn't know how to subtract.</p>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            © 2016 Puneet Aggarwal
+            <a class="grey-text text-lighten-4 right" href="#!">puneet</a>
+            </div>
+          </div>
+        </footer>
+
+
+  <!--  Scripts-->
+
+
+  </body>
+</html>
+
+
