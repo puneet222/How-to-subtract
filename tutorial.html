@@ -1,0 +1,499 @@
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>Starter Template - Materialize</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <script src="js/jquery-3.1.1.js"</script>
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+  </head>
+
+  <!-- -----------------------------------------------  CSS- -----------------------------------------------------------------  -->
+  <style type="text/css">  
+        .des{
+      height: 50px ;
+      border-radius: 5px ;
+    }
+    #prog{
+      position: relative;
+      width: 250px ;
+     /* border-style: solid;
+      border-color: grey ;
+      border-radius: 5px ;*/
+      top: 30px ;
+    }
+  body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
+  #main{
+    position: relative;
+    left: 300px ;
+   /* border-style: solid;
+      border-color: grey ;
+      border-radius: 5px ;*/
+      width: 900px;
+      bottom: 400px ;
+  }
+  #nextl{
+    height: 50px ;
+  }
+  #try{
+    height: 50px ;
+  }
+  .tut-card{
+    /*height: 500px ;*/
+    width: 500px ;
+    position: relative;
+    top: 0px ;
+    /*bottom: 100px ;*/
+    left: 41% ;
+  }
+  .ans-show{
+    height: 50px ;
+    /*width: 150px ;*/
+  }
+  </style>
+  <!--  ------------------------------------------------    JAVASCRIPT    ----------------------------------------------------------   -->
+  <script type="text/javascript">
+  $("#answer1show").hide() ;
+  $("#answer2show").hide() ;
+  $("#answer3show").hide() ;
+  $("#next2").hide() ;
+  $("#next3").hide() ;
+  $("#example-1").hide() ;
+  $("#example-2").hide() ;
+  $("#example-3").hide() ;
+  $("#example-4").hide() ;
+  $(document).ready(function(){
+        $("#answer1show").hide() ;
+        $("#answer2show").hide() ;
+        $("#answer3show").hide() ;
+        $("#next2").hide() ;
+        $("#next3").hide() ;
+        $("#example-1").hide() ;
+        $("#example-2").hide() ;
+        $("#example-3").hide() ;
+        $("#example-4").hide() ;
+        $("#prog-count").css("width" , "100%") ;
+        $("#prog-great").css("width" , "100%") ;
+        $("#prog-tut").css("width" , "0%") ;
+        $("#prog-sub").css("width" , "0%") ;
+        $("#next1").click(function(){    // --------------------------  handle starting tutorial click button
+          $("#start-tut").hide("slow" , function(){
+            $("#example-1").show("slow") ;
+            $("#next2").hide() ;
+            $("#prog-tut").css("width" , "25%") ;
+          })
+        }) ;
+
+        $("#answer1").click(function(){  // --------------------------  handle answer 1 click button
+          $("#e1-n1-head").hide("slow" , function(){
+            $("#e1-n2-content").hide("slow" , function(){
+              $("#e1-n2-head").hide("slow" , function(){
+                 $("#e1-n1-1").hide("slow" , function(){
+                  $("#answer1show").show("slow" , function(){
+                    $("#e1-ans").text(2) ;
+                    $("#answer1").hide("slow") ;
+                    $("#next2").show("slow");
+                    $("#prog-tut").css("width" , "50%") ;
+                  });
+                })
+              })
+            })
+          })
+        }) ;
+
+        $("#next2").click(function(){    // --------------------------  handle after completing Example 1 click button
+          $("#example-1").hide("slow" , function(){
+            $("#example-2").show("slow") ;
+              $("#next2").hide() ;
+          })
+        }) ;
+
+        $("#answer2").click(function(){
+          $("#e2-n1-head").hide("slow" , function(){
+            $("#e2-n2-head").hide("slow" , function(){
+              $("#e2-n2-content").hide("slow" , function(){
+                $("#e2-n1-1").hide("slow") ;
+                 $("#e2-n1-2").hide("slow" , function(){
+                  $("#answer2show").show("slow" , function(){
+                    $("#e2-ans").text(4) ;
+                    $("#answer2").hide("slow") ;
+                    $("#next3").show("slow");
+                    $("#prog-tut").css("width" , "75%") ;
+                  });
+                })
+              })
+            })
+          })
+        });
+
+
+        $("#next3").click(function(){    // --------------------------  handle after completing Example 2 click button
+          $("#example-2").hide("slow" , function(){
+            $("#example-3").show("slow") ;
+              $("#next4").hide() ;
+          })
+        }) ;
+
+         $("#answer3").click(function(){  // --------------------------  handle answer 1 click button
+          $("#e3-n1-head").hide("slow" , function(){
+            $("#e3-n2-head").hide("slow" , function(){
+              $("#e3-n2-content").hide("slow" , function(){
+                 $("#e3-n1-1").hide("slow" , function(){
+                  $("#answer3show").show("slow" , function(){
+                    $("#e3-ans").text(4) ;
+                    $("#answer3").hide("slow") ;
+                    $("#next4").show("slow");
+                    $("#prog-tut").css("width" , "100%") ;
+                  });
+                })
+              })
+            })
+          })
+        }) ;
+
+
+        $("#next4").click(function(){    // --------------------------  handle after completing Example 2 click button
+          $("#example-3").hide("slow" , function(){
+            $("#example-4").show("slow") ;
+          })
+        }) ;
+
+
+  }) ;
+  </script>
+
+  <body>
+
+<nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="index.html" class="brand-logo">Subtract IT <i class="material-icons">mode_edit</i></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="#">Navbar Link</a></li>
+      </ul>
+
+      <ul id="nav-mobile" class="side-nav">
+        <li><a href="#">Navbar Link</a></li>
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+
+  <div id="prog">
+  <h3 class="header center grey-text">Progress<i class="material-icons">launch</i></h3>
+  <div class="row">
+  <div class="col l12 s12">
+  <h5 class="header center" style="color:#b71c1c;">Counting<i class="material-icons">group_work</i></h5>  <!--    Counting    -->
+  <div class="progress">
+      <div class="determinate" id="prog-count" style="width: 70%"></div>
+  </div>
+  </div>
+  </div>
+
+   <div class="row">
+  <div class="col l12 s12">
+  <h5 class="header center" style="color:#ff5722 ;">Greater<i class="material-icons">call_made</i></h5>    <!--    Greater   -->
+  <div class="progress">
+      <div class="determinate" id="prog-great" style="width: 70%"></div>
+  </div>
+  </div>
+  </div>
+
+   <div class="row">
+  <div class="col l12 s12">
+  <h5 class="header center " style="color:#004d40 ;">Tutorial<i class="material-icons">info</i></h5>       <!--    Tutorial    -->
+  <div class="progress">
+      <div class="determinate" id="prog-tut" style="width: 70%"></div>
+  </div>
+  </div>
+  </div>
+
+   <div class="row">
+  <div class="col l12 s12">
+  <h5 class="header center " style="color:#4a148c ;">Subtraction<i class="material-icons">mode_edit</i></h5>    <!--    Subtraction    -->
+  <div class="progress">
+      <div class="determinate" id="prog-sub" style="width: 70%"></div>
+  </div>
+  </div>
+  </div>
+  </div>
+
+  <div id="main">
+  <h2 class="header center " style="color:#004d40;">Subtraction Tutorial <i class="large material-icons">info</i></h2>  <!--  MAIN   Division   -->
+  
+  <!-- ------------------------------------  STARTING   TUTORIAL   CARD -------------------------------------------   -->
+
+  <div class="row" id="start-tut">
+        <div class="col s12 m6">
+          <div class="card blue-grey darken-1 z-depth-3 tut-card" >
+            <div class="card-content white-text">
+              <span class="card-title" id="heading"><h3>This is Subtraction Tutorial</h3></span>
+              <div id="content">
+              <p><h5>In this Tutorial you're gonna learn about how to subtract two numbers.</h5></p>
+              <p><h5>This is a very easy Tutorial.</h5></p>
+              <p><h5>Tutorial will teach Subtraction via animation</h5></p>
+              </div>
+              <br>
+            </div>
+            <div class="card-action center">
+              <a id="next1" class="btn center orange darken-4">Start</a>
+            </div>
+          </div>
+        </div>
+  </div>
+
+  <!-- ------------------------------------  EXAMPLE   1 -------------------------------------------   -->
+
+  <div class="row" id="example-1">
+        <div class="col s12 m6">
+          <div class="card brown darken-3 z-depth-3 tut-card" >
+            <div class="card-content white-text">
+              <span class="card-title" id="heading"><h3>Example 1</h3></span>
+              <div id="content">
+              <!--  -----------------  NUMBER 1 -------------------------   -->
+              <h5 id="e1-n1-head">Number 1 : <strong>3</strong></h5>
+              <div class="row">
+              <div class="col s6 l4 center">
+              <img src="images/show2.png" height="100px" width="100px" >
+              </div>
+              <div class="col s6 l4 center">
+              <img src="images/show2.png" height="100px" width="100px">
+              </div>
+              <div class="col s6 l4 center">
+              <img src="images/show2.png" height="100px" width="100px" id="e1-n1-1">
+              </div>
+              </div>
+
+              <!--  -----------------  NUMBER 2 -------------------------   -->
+              <h5 id="e1-n2-head">Number 1 : <strong>1</strong></h5>
+              <div class="row" id="e1-n2-content">
+              <div class="col s12 l12 center">
+              <img src="images/show2.png" height="100px" width="100px">
+              </div>
+              </div>
+              <br>
+              <h5 class="center"><strong>3 - 1 = </strong><span id="e1-ans">?</span></h5>
+              <br>
+              <!--   ----------------  ANSWER  EXAMPLE 1 -------------------------  -->
+              <div id="answer1show" class="card brown center ans-show">
+              <h5>Answer is <strong>2</strong></h5>
+              </div>
+
+              </div>
+              <br>
+            </div>
+            <div class="card-action center" id="answer1">
+              <a  class="btn center orange darken-4">Answer</a>
+            </div>
+            <div class="card-action center" id="next2">
+              <a  class="btn center  light-blue darken-4">Next</a>
+            </div>
+          </div>
+        </div>
+  </div>
+
+  <!-- ------------------------------------  EXAMPLE  2   -------------------------------------------   -->
+
+  <div class="row" id="example-2">
+        <div class="col s12 m6">
+          <div class="card orange darken-4 z-depth-3 tut-card" >
+            <div class="card-content white-text">
+              <span class="card-title" id="heading"><h3>Example 2</h3></span>
+              <div id="content">
+              <!--  -----------------  NUMBER 1 -------------------------   -->
+              <h5 id="e2-n1-head">Number 1 = <strong>6</strong></h5>
+              <div class="row">
+              <div class="col s6 l4 center">
+              <img src="images/show2.png" height="100px" width="100px" >
+              </div>
+              <div class="col s6 l4 center">
+              <img src="images/show2.png" height="100px" width="100px">
+              </div>
+              <div class="col s6 l4 center">
+              <img src="images/show2.png" height="100px" width="100px">
+              </div>
+              </div>
+
+              <div class="row">
+              <div class="col s6 l4 center">
+              <img src="images/show2.png" height="100px" width="100px" >
+              </div>
+              <div class="col s6 l4 center">
+              <img src="images/show2.png" height="100px" width="100px" id="e2-n1-2">
+              </div>
+              <div class="col s6 l4 center">
+              <img src="images/show2.png" height="100px" width="100px" id="e2-n1-1">
+              </div>
+              </div>
+
+              <!--  -----------------  NUMBER 2 -------------------------   -->
+              <h5 id="e2-n2-head">Number 2  =  <strong>2</strong></h5>
+              <div class="row" id="e2-n2-content">
+              <div class="col s12 l6 center">
+              <img src="images/show2.png" height="100px" width="100px">
+              </div>
+              <div class="col s12 l6 center">
+              <img src="images/show2.png" height="100px" width="100px">
+              </div>
+              </div>
+              <br>
+              <h5 class="center"><strong>6 - 2 = </strong><span id="e2-ans">?</span></h5>
+              <br>
+              <!--   ----------------  ANSWER  EXAMPLE 1 -------------------------  -->
+              <div id="answer2show" class="card brown center ans-show">
+              <h5>Answer is <strong>4</strong></h5>
+              </div>
+
+              </div>
+              <br>
+            </div>
+            <div class="card-action center" id="answer2">
+              <a  class="btn center teal darken-1">Answer</a>
+            </div>
+            <div class="card-action center" id="next3">
+              <a  class="btn center  light-blue darken-4">Next</a>
+            </div>
+          </div>
+        </div>
+  </div>
+
+<!-- ------------------------------------  EXAMPLE  3   -------------------------------------------   -->
+
+  <div class="row" id="example-3">
+        <div class="col s12 m6">
+          <div class="card red darken-1 z-depth-3 tut-card" >
+            <div class="card-content white-text">
+                            <span class="card-title" id="heading"><h3>Example 3</h3></span>
+              <div id="content">
+              <!--  -----------------  NUMBER 1 -------------------------   -->
+              <h5 id="e3-n1-head">Number 1 = <strong>8</strong></h5>
+              <div class="row">
+              <div class="col s6 l3 center">
+              <img src="images/show2.png" height="100px" width="100px" >
+              </div>
+              <div class="col s6 l3 center">
+              <img src="images/show2.png" height="100px" width="100px">
+              </div>
+              <div class="col s6 l3 center">
+              <img src="images/show2.png" height="100px" width="100px">
+              </div>
+              <div class="col s6 l3 center">
+              <img src="images/show2.png" height="100px" width="100px">
+              </div>
+              </div>
+
+              <div class="row" id="e3-n1-1">
+              <div class="col s6 l3 center">
+              <img src="images/show2.png" height="100px" width="100px" >
+              </div>
+              <div class="col s6 l3 center">
+              <img src="images/show2.png" height="100px" width="100px">
+              </div>
+              <div class="col s6 l3 center">
+              <img src="images/show2.png" height="100px" width="100px">
+              </div>
+              <div class="col s6 l3 center">
+              <img src="images/show2.png" height="100px" width="100px">
+              </div>
+              </div>
+
+              <!--  -----------------  NUMBER 2 -------------------------   -->
+              <h5 id="e3-n2-head">Number 2  =  <strong>4</strong></h5>
+              <div class="row" id="e3-n2-content">
+              <div class="col s6 l3 center">
+              <img src="images/show2.png" height="100px" width="100px" >
+              </div>
+              <div class="col s6 l3 center">
+              <img src="images/show2.png" height="100px" width="100px">
+              </div>
+              <div class="col s6 l3 center">
+              <img src="images/show2.png" height="100px" width="100px">
+              </div>
+              <div class="col s6 l3 center">
+              <img src="images/show2.png" height="100px" width="100px">
+              </div>
+              </div>
+              <br>
+              <h5 class="center"><strong>6 - 2 = </strong><span id="e3-ans">?</span></h5>
+              <br>
+              <!--   ----------------  ANSWER  EXAMPLE 1 -------------------------  -->
+              <div id="answer3show" class="card brown center ans-show">
+              <h5>Answer is <strong>4</strong></h5>
+              </div>
+
+              </div>
+              <br>
+            </div>
+            <div class="card-action center" id="answer3">
+              <a  class="btn center teal darken-1">Answer</a>
+            </div>
+            <div class="card-action center" id="next4">
+              <a  class="btn center  light-blue darken-4">FINISH</a>
+            </div>
+          </div>
+        </div>
+  </div>
+
+  <!-- ------------------------------------  CONGRATULATIONS   -------------------------------------------   -->
+
+  <div class="row" id="example-4">
+        <div class="col s12 m6">
+          <div class="card purple darken-4 z-depth-3 tut-card" >
+            <div class="card-content white-text">
+                            <span class="card-title" id="heading"><h3>CONGRATULATIONS!</h3></span>
+              <div id="content">
+                <br>
+                <p><h5>Congratulations you have completed all basic requisites.</h5></p>
+                <p><h5>Now You are ready to solve subtraction problem.</h5></p>
+                <p><h5>Click FINISH to start solving problems.</h5></p>
+                <br>
+              </div>
+              <br>
+            </div>
+            <div class="card-action center" id="finish">
+              <a  class="btn center  orange darken-4" href="subtract.html">FINISH</a>
+            </div>
+          </div>
+        </div>
+  </div>
+
+  </div>                        <!--   ---------------------------  MAIN  DIVISION  ENDED --------------------------------      -->
+
+   
+
+
+  <footer class="page-footer grey darken-2">
+          <div class="container">
+          <div class="row">
+              <div class="col l12 s12 center">
+                <h5 class="white-text">AI Project</h5>
+                <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            © 2016 Puneet Aggarwal
+            <a class="grey-text text-lighten-4 right" href="#!">puneet</a>
+            </div>
+          </div>
+        </footer>
+
+
+  <!--  Scripts-->
+
+
+  </body>
+</html>
