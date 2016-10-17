@@ -91,113 +91,26 @@
         
         function next_question()  // -------------------------------------  generate next question
         {
-          rand = Math.floor((Math.random()*10)+1) ;
-          // alert(rand) ;
-           $("#next").hide() ;
-          var htmlimage = '<img src="images/show.png" height=100px width100px>' ;
-          $("#cimages").html(htmlimage) ;
-          for(var i = 1 ;  i < rand ; i++)
-          {
-             $("#cimages").append(htmlimage) ;
-          }
+         alert("cheater") ;
         }
 
         // function for correct user input
         function correct_answer()            // -----------------------------  function for handling correct answer
         {
-          $("#cor").show();
-          console.log("in correct function") ;
-            var correct = $("#cscore").text() ;
-            correct++ ;
-            $("#cscore").text(correct) ;
-            console.log("correct : " + correct) ;
-            var total = $("#tscore").text() ;
-            var arr = total.split("/") ;
-           // console.log(arr) ;
-           var x = arr[0] ;
+          
            x++ ;
-           var p = x*5 ;      
-           console.log("percent is : " + p) ;
-           var app = x+"/" + arr[1] ;
-           $("#tscore").text(app) ;
-           if(x == arr[1])
-           {
-              // level complete
-              var percent = p+"%" ;
-              console.log("percent : " + percent) ;
-              $("#prog-count").css("width" , percent) ;
-              $("#cimages").slideUp() ;
-              $("#input-number").hide() ;
-              // check scores
-              var newscore = $("#cscore").text() ;
-              if(newscore > arr[1]-2)
-              {
-                // next level
-                var nextpage = "greater.html" ;
-                var newhtml = '<a class="btn  pink accent-2 waves-effect center-align mycent" href='+nextpage+'>Next Level</a>' ;
-                console.log(newhtml) ;
-                $("#next-level").html(newhtml) ;
-              }
-              else
-              {
-                //try again
-                var newhtml = '<a class="btn  pink accent-2 waves-effect center-align mycent" href="counting.html">Try Again</a>' ;
-                 $("#next-level").html(newhtml) ;
-
-              }
-            //  alert("completed") ;
-           }
-           else
-           {
-            var percent = p+"%" ;
-             console.log("percent : " + percent) ;
-            $("#prog-count").css("width" , percent) ;
-            $("#cimages").slideUp() ;
-            $("#input-number").hide() ;
-            $("#next").show();
-           }
+//           var p = x*5 ;      
+//           console.log("percent is : " + p) ;
+//           var app = x+"/" + arr[1] ;
+//           $("#tscore").text(app) ;
+//           if(x == arr[1])
+            alert("you are a fucking cheater") ;
+           
         }
 
         function incorrect_answer()            ///       --------------------------  function for handling incorrect answer
         {
-          $("#inc").show("slow");
-          console.log("in incorrect function") ;
-            var incorrect = $("#iscore").text() ;
-            incorrect++ ;
-            $("#iscore").text(incorrect) ;
-            var total = $("#tscore").text() ;
-            var arr = total.split("/") ;
-           // console.log(arr) ;
-           var x = arr[0] ;
-           x++ ;
-           var p = x*5 ;   
-           console.log("percent is : " + p) ;
-           var app = x+"/" + arr[1] ;
-           $("#tscore").text(app) ;
-           if(x == arr[1])
-           {
-              // level complete
-              var percent = p+"%" ;
-              console.log("percent : " + percent) ;
-              $("#prog-count").css("width" , percent) ;
-              $("#count-head").hide();
-              $("#cimages").slideUp() ;
-              $("#input-number").hide() ;
-              var newscore = $("#cscore").text() ;
-              if(newscore > arr[1]-2)
-              {
-                // next level
-                var nextpage = "greater.html" ;
-                var newhtml = '<a class="btn  pink accent-2 waves-effect center-align mycent" href='+nextpage+'>Next Level</a>' ;
-                console.log(newhtml);
-                $("#next-level").html(newhtml) ;
-              }
-              else
-              {
-                //try again
-                var newhtml = '<a class="btn  pink accent-2 waves-effect center-align mycent" href="counting.html">Try Again</a>' ;
-                 $("#next-level").html(newhtml) ;
-              }
+           alert("you are acheater") ;
             //  alert("completed") ;
            }
            else

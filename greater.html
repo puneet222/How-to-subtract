@@ -71,141 +71,42 @@
 
         function correct_answer()   //------------------------------------------------- funtion for handling correct answer
         {
-          var correct = $("#cscore").text() ;
-            correct++ ;
-            $("#cscore").text(correct) ;
-            console.log("correct : " + correct) ;
-            var total = $("#tscore").text() ;
-            var arr = total.split("/") ;
-           // console.log(arr) ;
-           var x = arr[0] ;
-           x++ ;
-           var p = x*6.6667 ;     // ----------------------------------- change percent accordingly
-           console.log("percent is : " + p) ;
-           var app = x+"/" + arr[1] ;
-           $("#tscore").text(app) ;
-           console.log("x is " + x +  "   " + "tot :  " + arr[1] ) ; 
-           if(x >= arr[1])
-           {
-              // level complete
-              var percent = p+"%" ;
-              $("#question").hide() ;
-              $("#answer_c").hide() ;
-              $("#answer_i").hide() ;
-              console.log("percent : " + percent) ;
-              $("#prog-great").css("width" , percent) ;
-             
-              // check scores
-              var newscore = $("#cscore").text() ;
-              if(newscore > arr[1]-4)
-              {
-                // next level
-                var nextpage = "tutorial.html" ;
-                var newhtml = '<a id="nextl" class="btn  pink accent-2 waves-effect center-align mycent" href='+nextpage+'>Next Level<i class="large material-icons">fast_forward</i></a>' ;
-                console.log(newhtml);
-                $("#next-level").html(newhtml) ;
-              }
-              else
-              {
-                //try again
-                var newhtml = '<a class="btn  pink accent-2 waves-effect center-align mycent" href="greater.html" id="try">Try Again<i class="large material-icons">loop</i></a>' ;
-                 $("#next-level").html(newhtml) ;
-              }
+           alert("cheater") ;
             //  alert("completed") ;
-           }
-           else
-           {
-            var percent = p+"%" ;
-             console.log("percent : " + percent) ;
-            $("#prog-great").css("width" , percent) ;
-            $("#question").hide() ;
-            $("#answer_c").show("slow") ;
-           }
+          
         }
 
         function incorrect_answer()   //------------------------------------------------- funtion for handling incorrect answer
         {
-          var incorrect = $("#iscore").text() ;
-            incorrect++ ;
-            $("#iscore").text(incorrect) ;
-            var total = $("#tscore").text() ;
-            var arr = total.split("/") ;
-           // console.log(arr) ;
-           var x = arr[0] ;
-           x++ ;
-           var p = x*6.6667 ;       // -----------------------------------------------  CHANGE   ACCORDINGLY 
-           console.log("percent is : " + p) ;
-           var app = x+"/" + arr[1] ;
-           $("#tscore").text(app) ;
-           if(x >= arr[1])
-           {
-              // level complete
-              // alert("level complete") ;
-              $("#question").hide() ;
-              $("#answer_c").hide() ;
-              $("#answer_i").hide() ;
-              var percent = p+"%" ;
-              console.log("percent : " + percent) ;
-              $("#prog-great").css("width" , percent) ;
-              var newscore = $("#cscore").text() ;
-              if(newscore > arr[1]-4)
-              {
-                // next level
-                var nextpage = "tutorial.html" ;
-                var newhtml = '<a id="nextl" class="btn  pink accent-2 waves-effect center-align mycent" href='+nextpage+'>Next Level<i class="large material-icons">fast_forward</i></a>' ;
-                console.log(newhtml);
-                $("#next-level").html(newhtml) ;
-              }
-              else
-              {
-                //try again
-                var newhtml = '<a class="btn  pink accent-2 waves-effect center-align mycent" href="greater.html" id="try">Try Again<i class="large material-icons">loop</i></a>' ;
-                 $("#next-level").html(newhtml) ;
-              }
-            //  alert("completed") ;
-           }
-           else
-           {
-              var percent = p+"%" ;
-              console.log("percent : " + percent) ;
-              $("#prog-great").css("width" , percent) ;
-              $("#question").hide() ;
-              $("#answer_i").show("slow") ;
-           }
+           alert("you are a fucking cheater") ;
         }
 
         function generate_next()
         {
-          $("#answer").hide() ;
-          var rand1 = Math.floor((Math.random()*10)+1) ;
-          var rand2 = Math.floor((Math.random()*10)+1) ;
-          console.log(rand1  + "  " + rand2) ;
-          $("#first").text(rand1) ;
-          $("#second").text(rand2) ;
-          $("#question").show() ;
+           alert("you are a fucking cheater") ;
         }
 
         $("#first").click(function(){
                                                        // -------------------------------  click function for first button
-          var x = $(this).text() ;
-          var y = $("#second").text() ;
-          x = parseInt(x) ;
-          y = parseInt(y) ;
-          console.log(x + "  " + y ) ;  
-          if(x > y)
-          {
-            // call to correct function
-            // alert($("#first").text()) ;
-            correct_answer() ;
-            // alert("Correct") ;
-          }
-          else
-          {
-            // call to incorrect function
-            // alert($("#second").text()) ;
-            incorrect_answer()
-            // alert("Incorrect") ;
-          }
+//          var x = $(this).text() ;
+//          var y = $("#second").text() ;
+//          x = parseInt(x) ;
+//          y = parseInt(y) ;
+//          console.log(x + "  " + y ) ;  
+//          if(x > y)
+//          {
+//            // call to correct function
+//            // alert($("#first").text()) ;
+//            correct_answer() ;
+//            // alert("Correct") ;
+//          }
+//          else
+//          {
+//            // call to incorrect function
+//            // alert($("#second").text()) ;
+//            incorrect_answer()
+//            // alert("Incorrect") ;
+//          }
         }) ;
 
         $("#second").click(function(){     // -------------------------------  click function for second button
@@ -232,33 +133,34 @@
         }) ;
 
         $("#equal").click(function(){     // -------------------------------  click function for equal button
-          var x = $("#first").text() ;
-          var y = $("#second").text() ;
-          x = parseInt(x) ;
-          y = parseInt(y) ;
-          if(x == y)
-          {
-            // call to correct function
-            correct_answer() ;
-            // alert("Correct") ;
-          }
-          else
-          {
-            // call to incorrect function
-            incorrect_answer();
-            // alert("Incorrect") ;
-          }
-        }) ;
-
-        $("#next_c").click(function(){
-          $("#answer_c").hide() ;
-          generate_next() ;
-        });
-
-        $("#next_i").click(function(){
-          $("#answer_i").hide() ;
-          generate_next() ;
-        });
+//          var x = $("#first").text() ;
+//          var y = $("#second").text() ;
+//          x = parseInt(x) ;
+//          y = parseInt(y) ;
+//          if(x == y)
+//          {
+//            // call to correct function
+//            correct_answer() ;
+//            // alert("Correct") ;
+//          }
+//          else
+//          {
+//            // call to incorrect function
+//            incorrect_answer();
+//            // alert("Incorrect") ;
+//          }
+//        }) ;
+//
+//        $("#next_c").click(function(){
+//          $("#answer_c").hide() ;
+//          generate_next() ;
+//        });
+//
+//        $("#next_i").click(function(){
+//          $("#answer_i").hide() ;
+//          generate_next() ;
+//        });
+             alert("you are a fucking cheater") ;
 
     });
   </script>
